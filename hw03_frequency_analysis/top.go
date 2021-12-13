@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-const MAX_RES_COUNT int = 10
+const MaxResultCount int = 10
 
 func minDigit(x, y int) int {
 	if x > y {
@@ -19,14 +19,12 @@ func Top10(text string) []string {
 		k string
 		v int
 	}
-	var (
-		words []string       = make([]string, 0)
-		wm    map[string]int = make(map[string]int)
-		sm    []sortedMap    = make([]sortedMap, 0)
-		out   []string       = make([]string, 0)
-	)
 
-	words = strings.Fields(text)
+	wm := make(map[string]int)
+	sm := make([]sortedMap, 0)
+	out := make([]string, 0)
+
+	words := strings.Fields(text)
 
 	// Подсчитали количество повторений слов в тексте
 	for _, w := range words {
@@ -48,7 +46,7 @@ func Top10(text string) []string {
 		return sm[i].v > sm[j].v
 	})
 	// Берём для вывода отсортированный список слов, но не больше допустимого
-	for _, v := range sm[:minDigit(len(sm), MAX_RES_COUNT)] {
+	for _, v := range sm[:minDigit(len(sm), MaxResultCount)] {
 		out = append(out, v.k)
 	}
 	return out

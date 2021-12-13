@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-var positive_tests = []struct {
+var positiveTests = []struct {
 	text                    string
 	expectedWithoutAsterisk []string
 }{
@@ -83,7 +83,7 @@ var positive_tests = []struct {
 }
 
 func TestTop10(t *testing.T) {
-	for _, tc := range positive_tests {
+	for _, tc := range positiveTests {
 		tc := tc
 		t.Run(tc.text, func(t *testing.T) {
 			require.Equal(t, tc.expectedWithoutAsterisk, Top10(tc.text))
