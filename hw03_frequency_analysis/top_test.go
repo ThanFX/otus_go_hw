@@ -68,6 +68,18 @@ var positive_tests = []struct {
 			"bb", // 2
 		},
 	},
+	{
+		text: "cat and dog, one dog,two cats and one man",
+		expectedWithoutAsterisk: []string{
+			"and",
+			"one",
+			"cat",
+			"cats",
+			"dog,",
+			"dog,two",
+			"man",
+		},
+	},
 }
 
 func TestTop10(t *testing.T) {
