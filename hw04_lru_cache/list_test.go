@@ -27,6 +27,21 @@ func TestList(t *testing.T) {
 		l.Remove(middle)         // [10, 30]
 		require.Equal(t, 2, l.Len())
 
+		// Удаление единственного элемента, удаление из пустого списка
+		l.Remove(l.Back()) // [10]
+		require.Equal(t, 1, l.Len())
+		require.Equal(t, 10, l.Front().Value.(int))
+
+		l.Remove(l.Front()) // []
+		require.Equal(t, 0, l.Len())
+
+		l.Remove(l.Front()) // []
+		require.Equal(t, 0, l.Len())
+
+		require.Nil(t, l.Front())
+
+		l.PushFront(10) // [10]
+		l.PushBack(30)  // [10, 30]
 		for i, v := range [...]int{40, 50, 60, 70, 80} {
 			if i%2 == 0 {
 				l.PushFront(v)
@@ -47,5 +62,6 @@ func TestList(t *testing.T) {
 			elems = append(elems, i.Value.(int))
 		}
 		require.Equal(t, []int{70, 80, 60, 40, 10, 30, 50}, elems)
+
 	})
 }
